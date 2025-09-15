@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { NotificationService } from './core/notifications/notifications.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private notificationService: NotificationService) {
+    this.notificationService.requestPermissions();
+  }
 }

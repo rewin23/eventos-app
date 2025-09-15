@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Eventos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/events/create">+</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <app-event-card
+      *ngFor="let ev of events"
+      [event]="ev"
+      [routerLink]="['/events', ev.id]"
+    ></app-event-card>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="goCreateEvent()">
+          <ion-icon name="add-circle"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

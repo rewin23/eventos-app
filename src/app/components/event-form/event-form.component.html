@@ -1,0 +1,34 @@
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Título</ion-label>
+    <ion-input [(ngModel)]="event.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Descripción</ion-label>
+    <ion-textarea [(ngModel)]="event.description"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Recordatorios (minutos antes)</ion-label>
+      <ion-select multiple="true" [(ngModel)]="event.reminders">
+        <ion-select-option *ngFor="let item of reminderOptions | keyvalue" [value]="item.key">
+          {{ item.value }}
+        </ion-select-option>
+      </ion-select>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label position="stacked">Fecha inicio</ion-label>
+    <ion-datetime presentation="date" [(ngModel)]="event.startAt"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Fecha termino</ion-label>
+    <ion-datetime presentation="date" [(ngModel)]="event.endAt"></ion-datetime>
+  </ion-item>
+
+
+  <ion-button expand="full" (click)="onSubmit()">Guardar</ion-button>
+</ion-list>

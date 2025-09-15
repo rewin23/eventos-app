@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+    <ion-title>Calendario de Eventos</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="container">
+    <app-event-calendar
+        [events]="events"
+        [showEventList]="true"
+        [allowEventCreation]="true"
+        (eventSelected)="onEventSelected($event)"
+        (daySelected)="onDaySelected($event)"
+        (createEvent)="goCreateEvent($event)">
+    </app-event-calendar>
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="goCreateEvent()">
+            <ion-icon name="add-circle"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>
+
+
+

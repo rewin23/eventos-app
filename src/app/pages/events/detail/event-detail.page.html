@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle del Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="event" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ event.title }}</ion-card-title>
+      <ion-card-subtitle>
+        {{ event.startAt | date:'medium' }}
+        <span *ngIf="event.endAt"> - {{ event.endAt | date:'mediumTime' }}</span>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p *ngIf="event.description"><strong>Descripción:</strong> {{ event.description }}</p>
+      <p *ngIf="event.location"><strong>Ubicación:</strong> {{ event.location }}</p>
+      <p *ngIf="event.reminders?.length">
+        <strong>Recordatorios:</strong> {{ event.reminders }} minutos antes
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+
+  <!-- Botón flotante de eliminar -->
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="medium" (click)="deleteEvent()">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
